@@ -239,8 +239,8 @@ isOr,isNot,isAnd,isMov,flags,aluResult);
 		else
 			b = op2;
 		
-		//if(flags_assigned != 1'b1)
-		//	flags = 8'b00000000;
+		if(flags_assigned != 1'b1)
+			flags = 8'b00000000;
 	end
 	
 	always @ (*) begin
@@ -261,7 +261,7 @@ isOr,isNot,isAnd,isMov,flags,aluResult);
 											flags = 8'b00000010;
 										if(a==b)
 											flags = 8'b00000001;
-										//flags_assigned = 1'b1; //Signifies that flags have been assigned atleast once.
+										flags_assigned = 1'b1; //Signifies that flags have been assigned atleast once.
 									 end
 			13'b0001000000000: aluResult = a*b; //mul
 			13'b0000100000000: aluResult = a/b; //div

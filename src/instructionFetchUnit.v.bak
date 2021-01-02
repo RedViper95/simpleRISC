@@ -1,11 +1,10 @@
 `timescale 1us/1us
 
-module instructionFetchUnit(clk,reset,isBranchTaken,branchPc,pc,instruction,done);
+module instructionFetchUnit(clk,reset,isBranchTaken,branchPc,pc,instruction);
 	input clk,reset,isBranchTaken;
 	input [31:0] branchPc;
 	output [31:0] instruction;
 	output reg [31:0] pc;
-	output reg done;
 	
 	/*instructionMemory im_instance(.address(pc[4:0]),.clock(clk),.q(instruction));
 		[0..25]  :   01101000000000000000000000000000;
@@ -54,19 +53,14 @@ module instructionFetchUnit(clk,reset,isBranchTaken,branchPc,pc,instruction,done
 			rom[29] <= 32'b01101000000000000000000000000000; //nop
 			rom[30] <= 32'b01110101010000000000000000001011; //ld r5 11[r0]
 			rom[31] <= 32'b00000001100101000100000000000000; //add r6 r5 r1
-			done <= 0;
 		end
-		else if(isBranchTaken) begin
-			if(branchPc<32)
-				pc <= branchPc;
-			else
-				done <= 1;
-		end
+		else if(isBranchTaken)
+			pc <= branchPc;
 		else begin
 			if(pc<32)
 				pc <= pc+32'b00000000000000000000000000000001;
 			else
-				done <= 1;
+				$finish;
 		end
 	end
 	

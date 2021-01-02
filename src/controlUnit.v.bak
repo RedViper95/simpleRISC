@@ -1,18 +1,18 @@
-module controlUnit(run,opcode,I,isSt,isLd,isBeq,isBgt,isRet,isImmediate,isWb,isUBranch,
+module controlUnit(opcode,I,isSt,isLd,isBeq,isBgt,isRet,isImmediate,isWb,isUBranch,
 	isCall,isAdd,isSub,isCmp,isMul,isDiv,isMod,isLsl,isLsr,isAsr,
 	isOr,isAnd,isNot,isMov);
 	input [4:0] opcode;
-	input run,I;
+	input I;
 	output isSt,isLd,isBeq,isBgt,isRet,isImmediate,isWb,isUBranch,
 	isCall,isAdd,isSub,isCmp,isMul,isDiv,isMod,isLsl,isLsr,isAsr,
 	isOr,isAnd,isNot,isMov;
 	
-	assign isSt = (opcode==5'b01111)?(run)?1:0:0;
-	assign isLd = (opcode==5'b01110)?(run)?1:0:0;
-	assign isBeq = (opcode==5'b10000)?(run)?1:0:0;
-	assign isBgt = (opcode==5'b10001)?(run)?1:0:0;
-	assign isRet = (opcode==5'b10100)?(run)?1:0:0;
-	assign isImmediate = (I)?(run)?1:0:0;
+	assign isSt = (opcode==5'b01111)?1:0;
+	assign isLd = (opcode==5'b01110)?1:0;
+	assign isBeq = (opcode==5'b10000)?1:0;
+	assign isBgt = (opcode==5'b10001)?1:0;
+	assign isRet = (opcode==5'b10100)?1:0;
+	assign isImmediate = (I)?1:0;
 	assign isWb = (
 	(opcode==5'b00000)||
 	(opcode==5'b00001)||
@@ -28,22 +28,22 @@ module controlUnit(run,opcode,I,isSt,isLd,isBeq,isBgt,isRet,isImmediate,isWb,isU
 	(opcode==5'b01011)||
 	(opcode==5'b01100)||
 	(opcode==5'b10011)
-	)?(run)?1:0:0;
-	assign isUBranch = ((opcode==5'b10010)||(opcode==5'b10011)||(opcode==5'b10100))?(run)?1:0:0;
-	assign isCall = (opcode==5'b10011)?(run)?1:0:0;
-	assign isAdd = ((opcode==5'b00000)||(opcode==5'b01110)||(opcode==5'b01111))?(run)?1:0:0;
-	assign isSub = (opcode==5'b00001)?(run)?1:0:0;
-	assign isCmp = (opcode==5'b00101)?(run)?1:0:0;
-	assign isMul = (opcode==5'b00010)?(run)?1:0:0;
-	assign isDiv = (opcode==5'b00011)?(run)?1:0:0;
-	assign isMod = (opcode==5'b00100)?(run)?1:0:0;
-	assign isLsl = (opcode==5'b01010)?(run)?1:0:0;
-	assign isLsr = (opcode==5'b01011)?(run)?1:0:0;
-	assign isAsr = (opcode==5'b01100)?(run)?1:0:0;
-	assign isOr = (opcode==5'b00111)?(run)?1:0:0;
-	assign isAnd = (opcode==5'b00110)?(run)?1:0:0;
-	assign isNot = (opcode==5'b01000)?(run)?1:0:0;
-	assign isMov = (opcode==5'b01001)?(run)?1:0:0;
+	)?1:0;
+	assign isUBranch = ((opcode==5'b10010)||(opcode==5'b10011)||(opcode==5'b10100))?1:0;
+	assign isCall = (opcode==5'b10011)?1:0;
+	assign isAdd = ((opcode==5'b00000)||(opcode==5'b01110)||(opcode==5'b01111))?1:0;
+	assign isSub = (opcode==5'b00001)?1:0;
+	assign isCmp = (opcode==5'b00101)?1:0;
+	assign isMul = (opcode==5'b00010)?1:0;
+	assign isDiv = (opcode==5'b00011)?1:0;
+	assign isMod = (opcode==5'b00100)?1:0;
+	assign isLsl = (opcode==5'b01010)?1:0;
+	assign isLsr = (opcode==5'b01011)?1:0;
+	assign isAsr = (opcode==5'b01100)?1:0;
+	assign isOr = (opcode==5'b00111)?1:0;
+	assign isAnd = (opcode==5'b00110)?1:0;
+	assign isNot = (opcode==5'b01000)?1:0;
+	assign isMov = (opcode==5'b01001)?1:0;
 	
 endmodule
 
