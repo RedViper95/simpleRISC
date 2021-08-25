@@ -1,5 +1,5 @@
 # simpleRISC
-A basic 32-bit single core RISC processor based on the 'simpleRISC' ISA described by Professor Smuruti Ranjan Sarangi in his book titled 'Computer Organisation and Architecture'.
+A 32-bit single core RISC processor based on the 'simpleRISC' ISA described by Professor Smuruti Ranjan Sarangi in his book titled 'Computer Organisation and Architecture'.
 
 Few features about the ISA=>
   -->Provides 21 instructions.
